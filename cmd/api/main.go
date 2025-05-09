@@ -6,11 +6,8 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"time"
 )
-
-func main() {
-	fmt.Println("Hello world!")
-}
 
 const version = "1.0.0"
 
@@ -57,7 +54,7 @@ func main() {
 		IdleTimeout: time.Minute,
 		ReadTimeout: 5 * time.Second,
 		WriteTimeout: 10 * time.Second,
-		ErrorLog: slog.NewLogLogger(logger.Handler(), slog.LevelError)
+		ErrorLog: slog.NewLogLogger(logger.Handler(), slog.LevelError),
 	}
 
 	logger.Info("starting server...", "addr", srv.Addr, "env", cfg.env)
